@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration</title>
+    <script>
+        function validateForm() {
+            let password = document.forms["registerForm"]["password"].value;
+            let confirm = document.forms["registerForm"]["confirm_password"].value;
+
+            if (password !== confirm) {
+                alert("Passwords do not match!");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+
+<body>
+    <h2>Student Registration</h2>
+
+    <form name="registerForm"
+          action="student_register.php"
+          method="POST"
+          onsubmit="return validateForm();">
+
+        <label>Full Name:</label><br>
+        <input type="text" name="user_name" required><br><br>
+
+        <label>Email:</label><br>
+        <input type="email" name="user_email" required><br><br>
+
+        <label>Password:</label><br>
+        <input type="password" name="password" required><br><br>
+
+        <label>Confirm Password:</label><br>
+        <input type="password" name="confirm_password" required><br><br>
+
+        <label>Student Number:</label><br>
+        <input type="text" name="student_number" required><br><br>
+
+        <label>IC Number:</label><br>
+        <input type="text" name="ic_number"><br><br>
+
+        <label>Phone:</label><br>
+        <input type="text" name="student_phone"><br><br>
+
+        <label>Address:</label><br>
+        <textarea name="student_address"></textarea><br><br>
+
+        <button type="submit">Register</button>
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .role-btn {
+            width: 180px;
+            height: 40px;
+            margin: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #loginForm {
+            display: none;
+            margin-top: 30px;
+        }
+        input {
+            padding: 8px;
+            width: 250px;
+            margin: 5px;
+        }
+        button.submit-btn {
+            width: 150px;
+            height: 35px;
+            margin-top: 10px;
+        }
+    </style>
+
+    <script>
+        let selectedRole = '';
+
+        function selectRole(role) {
+            selectedRole = role;
+            document.getElementById('selectedRole').value = role;
+
+            document.getElementById('roleText').innerText =
+                role.toLowerCase().replace(/\b\w/g, c => c.toUpperCase());
+
+            document.getElementById('loginForm').style.display = 'block';
+        }
+
+        function validateLogin() {
+            let id = document.forms["loginForm"]["user_id"].value;
+            let password = document.forms["loginForm"]["password"].value;
+
+            if (!selectedRole) {
+                alert("Please select your role first!");
+                return false;
+            }
+            if (id === "" || password === "") {
+                alert("Please fill in all fields");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+
+<h2>Login - Select Your Role</h2>
+
+<div>
+    <button class="role-btn" onclick="selectRole('STUDENT')">Student</button>
+    <button class="role-btn" onclick="selectRole('WARDEN')">Warden</button>
+    <button class="role-btn" onclick="selectRole('MAINTENANCE')">Maintenance</button>
+    <button class="role-btn" onclick="selectRole('ADMIN')">Admin</button>
+</div>
+
+<div id="loginForm">
+    <h3>Login as <span id="roleText"></span></h3>
+
+    <form name="loginForm" action="login.php" method="POST" onsubmit="return validateLogin();">
+        <input type="hidden" name="role" id="selectedRole">
+
+        <input type="text" name="user_id" placeholder="Enter your ID" required><br>
+        <input type="password" name="password" placeholder="Enter your password" required><br>
+
+        <button type="submit" class="submit-btn">Login</button>
+    </form>
+
+    <p><a href="forgot_password.html">Forgot Password?</a></p>
+</div>
+
+</body>
+</html>
