@@ -65,7 +65,6 @@
 <h2>Login - Select Your Role</h2>
 
 <div>
-    <button class="role-btn" onclick="selectRole('STUDENT')">Student</button>
     <button class="role-btn" onclick="selectRole('WARDEN')">Warden</button>
     <button class="role-btn" onclick="selectRole('MAINTENANCE')">Maintenance</button>
     <button class="role-btn" onclick="selectRole('ADMIN')">Admin</button>
@@ -74,7 +73,7 @@
 <div id="loginForm">
     <h3>Login as <span id="roleText"></span></h3>
 
-    <form name="loginForm" action="login.php" method="POST" onsubmit="return validateLogin();">
+    <form name="loginForm" action="other_login.php" method="POST" onsubmit="return validateLogin();">
         <input type="hidden" name="role" id="selectedRole">
 
         <input type="text" name="user_id" placeholder="Enter your ID" required><br>
